@@ -11,7 +11,7 @@ public class MultiThread {
     void update(){
         Holder holder = new Holder();
         holder.a = a++;
-        try(){
+        try{
             Thread t = new Thread();
             t.sleep(10);
         } catch(Exception e){
