@@ -8,16 +8,19 @@ public class MultiThread {
     private int b = 0;
     private List<Holder> holders = new Vector<>();
 
-    void update(){
+    /* worse case: synchronized*/ void update(){
         Holder holder = new Holder();
         holder.a = a++;
-        try{
-            Thread t = new Thread();
-            t.sleep(10);
-        } catch(Exception e){
-            //Nothing to do
-        }
-        holder.b = b++;
+
+        //synchronized {
+            try {
+                Thread t = new Thread();
+                t.sleep(10);
+            } catch (Exception e) {
+                //Nothing to do
+            }
+            holder.b = b++;
+        //}
     }
 
     public class Holder{
